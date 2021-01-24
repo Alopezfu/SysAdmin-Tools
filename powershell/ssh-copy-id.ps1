@@ -9,7 +9,7 @@ if (Test-Path $id_rsa)
     $server = Read-Host -Prompt 'Input your server  name or Ip'
     $user = Read-Host -Prompt 'Username ssh'
     scp $id_rsa $user@$server':'/home/$user/
-    ssh $user@$server "if [ ! -f /home/alejandro/.ssh/authorized_keys ]; then mkdir /home/alejandro/.ssh ; touch /home/alejandro/.ssh/authorized_keys ; fi"
+    ssh $user@$server "if [ ! -f /home/$user/.ssh/authorized_keys ]; then mkdir /home/$user/.ssh ; touch /home/$user/.ssh/authorized_keys ; fi"
     ssh $user@$server "cat /home/$user/id_rsa.pub >> /home/$user/.ssh/authorized_keys && rm -f /home/$user/id_rsa.pub && chmod 700 /home/$user/.ssh/ && chmod 600 /home/$user/.ssh/authorized_keys"
     
     Clear-Host
